@@ -1,0 +1,108 @@
+{
+    "source_file": ":contentReference[oaicite:0]{index=0}",
+    "resume_date": "9/22/2025",
+    "name": "Timothy Panilaitis",
+    "contact": {
+        "phone": "978-437-0931",
+        "email": "timothy.panilaitis@tufts.edu"
+    },
+    "education": {
+        "school": "Tufts School of Engineering",
+        "location": "Medford, MA",
+        "degree": "Bachelor of Science in Computer Science",
+        "minor": "Human Factors Engineering",
+        "expected_graduation": "May 2027",
+        "gpa": 3.68,
+        "honors": [
+            "Dean's List"
+        ],
+        "relevant_courses": [
+            "Algorithms",
+            "Machine Structure and Programming",
+            "Calculus 1",
+            "Calculus 2",
+            "Calculus 3",
+            "Linear Algebra",
+            "Tech and Managerial Communication",
+            "Web Development",
+            "Machine Learning",
+            "Artificial Intelligence"
+        ]
+    },
+    "technical_skills": {
+        "programming_languages": [
+            "C",
+            "C++",
+            "Python",
+            "HTML",
+            "PHP",
+            "SQL",
+            "NoSQL"
+        ],
+        "tools_and_frameworks": [
+            "GitHub",
+            "scikit-learn",
+            "MATLAB",
+            "Arduino",
+            "Microsoft Office",
+            "ROS1"
+        ]
+    },
+    "project_experience": [{
+            "title": "COMP 135: Machine Learning Coursework Projects",
+            "organization": "Tufts University",
+            "dates": "May - August 2025",
+            "details": [
+                "Applied feature engineering to transform raw data into more informative representations, improving classification accuracy on complex datasets.",
+                "Built and evaluated neural network models with different solvers and activation functions, analyzing tradeoffs in convergence and performance."
+            ]
+            }, {
+            "title": "JumboHack",
+            "organization": "Tufts University",
+            "dates": "February 2025",
+            "details": [
+                "Led the software development for a braille printing robot, collaborating with another Computer Science student to create a codebase that converted PDFs and text files into Arduino motor instructions.",
+                "Worked closely with a team of Mechanical Engineers, taking initiative to research and implement motor and Arduino wiring using documentation and online resources.",
+                "Contributed to a winning project in the 'Mad Hatter' track, competing against 325 participants in an open-category challenge."
+            ]
+        }
+    ],
+    "work_experience": [{
+        "organization": "Tufts University",
+        "location": "Medford, MA",
+        "title": "Human Robot Interaction Researcher",
+        "dates": "September 2025 - Present",
+        "details": [
+            "Developed navigation system using ROS to manage local and global goals through a vector-based approach.",
+            "Managed individual time effectively to contribute maximum value to projects."
+        ]
+        }, {
+        "organization": "Tufts University",
+        "location": "Medford, MA",
+        "title": "Web Programming Teaching Assistant",
+        "dates": "September 2025 - Present",
+        "details": [
+            "Provided technical guidance and feedback to ~20 students, fostering growth in web programming skills."
+        ]
+        }, {
+        "organization": "Tufts University",
+        "location": "Medford, MA",
+        "title": "Campus Center Manager",
+        "dates": "December 2024 - Present",
+        "details": [
+            "Ensured smooth operations and building security as the sole authority during shifts, demonstrating reliability and accountability.",
+            "Independently managed room access, opening and closing spaces per student and event needs.",
+            "Assisted students and campus groups with information and problem resolution, fostering a supportive campus environment."
+        ]
+        }
+    ],
+    "interests": [
+        "Fiber Arts (crochet)",
+        "Soccer",
+        "Skiing",
+        "Game Development"
+    ],
+    "notes": {
+        "contact_mailto": "mailto:timothy.panilaitis@tufts.edu"
+    }
+}
