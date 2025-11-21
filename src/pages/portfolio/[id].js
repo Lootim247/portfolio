@@ -4,29 +4,25 @@ import Title_Section from '../../components/portfolio_build/title';
 import Paragraph_Section from '../../components/portfolio_build/paragraph';
 import Text_Image_Section from '../../components/portfolio_build/text_image';
 
-// Generate all slugs at build-time
-export async function generateStaticParams() {
-  return data.map((item) => ({
-    id: item.id,
-  }));
-}
+const componentMap = { Hero_Section, Title_Section, Paragraph_Section, Text_Image_Section };
 
-// Optional metadata (SEO)
-export async function generateMetadata({ params }) {
-  const item = data.find((i) => String(i.id) === String(params.id));
+export async function getStaticPaths() {
   return {
-    title: item ? item.title : 'Portfolio Item',
-    description: item ? item.description : 'Portfolio page',
+    paths: data.map(item => ({ params: { id: String(item.id) } })),
+    fallback: false, // or 'blocking' if you want non-prebuilt paths
   };
 }
 
-// Component mapping for words
-const componentMap = { Hero_Section, Title_Section, Paragraph_Section, Text_Image_Section };
+export async function getStaticProps({ params }) {
+  const item = data.find(i => String(i.id) === String(params.id));
+  return {
+    props: {
+      item: item || null
+    }
+  };
+}
 
-// The page component
-export default function PortfolioPage({ params }) {
-  const item = data.find((i) => String(i.id) === String(params.id));
-
+export default function PortfolioPage({ item }) {
   if (!item) {
     return (
       <main className="p-8">
@@ -40,7 +36,7 @@ export default function PortfolioPage({ params }) {
       {item.div_struct.map((block, idx) => {
         const Component = componentMap[block.type];
         if (!Component) return null;
-        return <Component key={idx} {...block.props}/>;
+        return <Component key={idx} {...block.props} />;
       })}
     </main>
   );
