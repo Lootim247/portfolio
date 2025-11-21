@@ -1,23 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-import Hero_Section from '@/components/portfolio_build/hero';
-import Title_Section from '@/components/portfolio_build/title';
-import Paragraph_Section from '@/components/portfolio_build/paragraph';
-import Text_Image_Section from '@/components/portfolio_build/text_image';
-
-let cachedData;
-function getPortfolioData() {
-  if (!cachedData) {
-    const filePath = path.join(process.cwd(), 'src', 'data', 'json', 'portfolio.json');
-    cachedData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  }
-  return cachedData;
-}
-
+import data from '../../data/json/portfolio.json';
+import Hero_Section from '../../components/portfolio_build/hero';
+import Title_Section from '../../components/portfolio_build/title';
+import Paragraph_Section from '../../components/portfolio_build/paragraph';
+import Text_Image_Section from '../../components/portfolio_build/text_image';
 
 // Generate all slugs at build-time
 export async function generateStaticParams() {
-  const data = getPortfolioData();
   return data.map((item) => ({
     id: item.id,
   }));
@@ -25,7 +13,6 @@ export async function generateStaticParams() {
 
 // Optional metadata (SEO)
 export async function generateMetadata({ params }) {
-  const data = getPortfolioData();
   const item = data.find((i) => String(i.id) === String(params.id));
   return {
     title: item ? item.title : 'Portfolio Item',
@@ -38,7 +25,6 @@ const componentMap = { Hero_Section, Title_Section, Paragraph_Section, Text_Imag
 
 // The page component
 export default function PortfolioPage({ params }) {
-  const data = getPortfolioData();
   const item = data.find((i) => String(i.id) === String(params.id));
 
   if (!item) {
