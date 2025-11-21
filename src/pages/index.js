@@ -2,51 +2,20 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
-import fs from 'fs'
-import styles from '../styles/Resume.module.css'
+import Image from 'next/image'
+import styles from '../styles/pages/Home.module.css'
+import Tab_Header from '@/components/tab_bar'
 
-export async function getStaticProps() {
-  const resumePath = path.join(process.cwd(), 'src', 'data', 'resume_info.json')
-  const linksPath = path.join(process.cwd(), 'src', 'data', 'link_manager.json')
-
-  const resumeRaw = fs.existsSync(resumePath) ? fs.readFileSync(resumePath, 'utf8') : 'null'
-  const linksRaw = fs.existsSync(linksPath) ? fs.readFileSync(linksPath, 'utf8') : 'null'
-
-  let resumeData = null
-  let linkData = null
-
-  try { resumeData = JSON.parse(resumeRaw) } catch (e) { resumeData = null }
-  try { linkData = JSON.parse(linksRaw) } catch (e) { linkData = null }
-
-  return {
-    props: {
-      resumeData,
-      linkData
-    }
-  }
+const home_data = {
+  "position_title" : "Tufts School of Engineering Computer Science Undergraduate",
+  "headshot_path" : "/elementor-placeholder-image.png",
+  "description" : `Timothy Panilaitis is a Computer Science student at the Tufts School of Engineering, with interests in machine learning, software development, and robotics. His coursework has strengthened his skills in algorithm design, programming, and system integration, while his Human Factors Engineering minor has given him tools to better understand user needs and design solutions around them.
+He is currently a research assistant working on a vector-based local navigation system, aiming to enable a robot to autonomously move between floors using an elevator. He also serves as a teaching assistant, mentoring students in web development and database management tools, while refining his own programming skills through independent projects. Beyond the classroom, he works as a Campus Center Manager at Tufts, ensuring smooth operations and supporting student needs.
+Looking forward, Timothy is seeking a summer internship where he can apply his technical skills, expand his knowledge in real-world settings, and grow as a developer.
+Outside of academics, he enjoys crocheting, soccer, cooking, and skiing.`
 }
 
-export default function Home({ resumeData, linkData }) {
-  if (!resumeData || !linkData) {
-    return (
-      <div className={styles.content}>
-        <Head>
-          <title>Resume — Timothy Panilaitis</title>
-        </Head>
-        <main className={styles.pdf}>
-          <h1>Data not found</h1>
-          <p>Make sure <code>/data/resume_info.json</code> and <code>/data/link_manager.json</code> exist.</p>
-        </main>
-      </div>
-    )
-  }
-
-  const contact = resumeData.contact || {}
-  const education = resumeData.education || {}
-  const technical = resumeData.technical_skills || {}
-  const projects = resumeData.project_experience || []
-  const work = resumeData.work_experience || []
-  const interests = resumeData.interests || []
+export default function Home() {
 
   const makeLink = (keyOrText) => {
     // Maps names/titles to URLs; fallback to '#' if missing
@@ -57,141 +26,48 @@ export default function Home({ resumeData, linkData }) {
     <>
       <div className={styles.full}>
         <Head>
-          <title>Timothy Panilaitis — Resume</title>
+          <title>Timothy Panilaitis — Home</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
 
         <div className={styles.content}>
-          {/* Top nav */}
-          <div className="tab_header">
-            <div className="tab_group_left">
-              <Link href="/" className={styles.nav_link}>Home</Link>
-              <Link href="/" className={styles.nav_link}>Resume</Link>
-              <Link href="/portfolio" className={styles.nav_link}>Portfolio</Link>
-            </div>
-            <div className={styles.tab_group_right}>
-              <Link href="/contact" className={styles.nav_link}>Contact</Link>
-            </div>
-          </div>
+          <Tab_Header/>
+        
 
-          {/* Resume content */}
-          <div className={styles.pdf}>
-            <div className={styles.header}>
-              <h1>Timothy Panilaitis</h1>
-              <div id="contact_line" className={styles.contact_line}>
-                {contact.phone ? `${contact.phone} | ` : ''}{contact.email || ''}
+          <div className={styles.headshot_row}>
+            {/* headshot and title */}
+            <div className={styles.title}>
+              <div className={styles.name_title}>
+                Timothy Panilaitis
+              </div>
+              <div className={styles.position_title}>
+                {home_data["position_title"] || 'ERROR: position_title not specified'}
               </div>
             </div>
 
-            <div className={styles.sections}>
-
-              {/* EDUCATION */}
-              <section>
-                <h2>EDUCATION</h2>
-                <hr />
-                <div className={styles.container} id="education">
-                  <a className={styles.a_link_div} href={makeLink(education.school)}>
-                    <div className={styles.bold_row}>
-                      <div>
-                        <b>{education.school || ''},</b> {education.location || ''}
-                      </div>
-                      <div><i>Expected, {education.expected_graduation || ''}</i></div>
-                    </div>
-                  </a>
-
-                  <div>
-                    <div>{education.degree || ''}{education.minor ? `, ${education.minor}` : ''}</div>
-                    <div>
-                      GPA: {education.gpa || ''}{Array.isArray(education.honors) && education.honors.length ? `, ${education.honors.join(', ')}` : ''}
-                      <br/>
-                    </div>
-                    {Array.isArray(education.relevant_courses) && education.relevant_courses.length > 0 && (
-                      <div>
-                        <br/>
-                        <b>Relevant Courses:</b>{' '}
-                        {education.relevant_courses.map((c, i) => (
-                          <a key={i} className={styles.a_link} href={makeLink(c)}>{c}</a>
-                        )).reduce((prev, curr) => [prev, ', ', curr])}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </section>
-
-              {/* TECHNICAL SKILLS */}
-              <section>
-                <h2>TECHNICAL SKILLS</h2>
-                <hr />
-                <div className={styles.container} id="technical_skills">
-                  <div>
-                    Programming Languages:{' '}
-                    {Array.isArray(technical.programming_languages) ? technical.programming_languages.map((pl, i) => (
-                      <a key={i} className={styles.a_link} href={makeLink(pl)}>{pl}</a>
-                    )).reduce((prev, curr) => [prev, ', ', curr]) : ''}
-                  </div>
-                  <div>
-                    Tools & Frameworks:{' '}
-                    {Array.isArray(technical.tools_and_frameworks) ? technical.tools_and_frameworks.map((t, i) => (
-                      <a key={i} className={styles.a_link} href={makeLink(t)}>{t}</a>
-                    )).reduce((prev, curr) => [prev, ', ', curr]) : ''}
-                  </div>
-                </div>
-              </section>
-
-              {/* PROJECT EXPERIENCE */}
-              <section>
-                <h2>PROJECT EXPERIENCE</h2>
-                <hr />
-                <div className={styles.container} id="project_experience">
-                  {projects.map((exp, idx) => (
-                    <a key={idx} className={styles.a_link_div} href={makeLink(exp.title)}>
-                      <div className={styles.experience_block}>
-                        <div className={styles.bold_row}>
-                          <div><b>{exp.title},</b> {exp.organization}</div>
-                          <div><i>{exp.dates}</i></div>
-                        </div>
-                        <ul>
-                          {Array.isArray(exp.details) ? exp.details.map((d, i) => <li key={i}>{d}</li>) : null}
-                        </ul>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </section>
-
-              {/* WORK EXPERIENCE */}
-              <section>
-                <h2>WORK EXPERIENCE</h2>
-                <hr />
-                <div className={styles.container} id="work_experience">
-                  {work.map((exp, idx) => (
-                    <a key={idx} className={styles.a_link_div} href={makeLink(exp.title)}>
-                      <div className={styles.experience_block}>
-                        <div className={styles.bold_row}>
-                          <div><b>{exp.organization},</b> {exp.location}</div>
-                          <div><i>{exp.dates}</i></div>
-                        </div>
-                        <div><i>{exp.title}</i></div>
-                        <ul>
-                          {Array.isArray(exp.details) ? exp.details.map((d, i) => <li key={i}>{d}</li>) : null}
-                        </ul>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </section>
-
-              {/* INTERESTS */}
-              <section>
-                <h2>INTERESTS</h2>
-                <hr />
-                <div className={styles.container} id="interests">
-                  {Array.isArray(interests) ? interests.join(' / ') : ''}
-                </div>
-              </section>
-
+            <div className={styles.headshot}>
+              <Image
+                src={home_data["headshot_path"]}
+                alt="Timothy Panilaitis Headshot"
+                width={200}
+                height={200}
+                className={styles.headshot_image}
+              />
             </div>
           </div>
+
+          <div>
+            {/* description of me */}
+            <div className={styles.description}>
+              {home_data["description"] || 'ERROR: description not specified'}
+            </div>
+          </div>
+
+          <div>
+            {/* Form asking for feedback on website */}
+            
+          </div>
+
         </div>
       </div>
     </>

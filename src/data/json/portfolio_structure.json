@@ -1,0 +1,32 @@
+{
+    "name": "root",
+    "type": "folder",
+    "children": [
+    {
+        "name": "Class Work",
+        "type": "folder",
+        "attributes": ["c++"],
+        "children" : [
+            {
+                
+            }
+        ]
+    },
+    {
+        "name": "Work Experiences",
+        "type": "folder",
+        "attributes": [],
+        "children" : [
+            {}
+        ]
+    },
+    {
+        "name": "Projects",
+        "type": "folder",
+        "attributes": [],
+        "children" : [
+            {}
+        ]
+    }
+    ]
+}

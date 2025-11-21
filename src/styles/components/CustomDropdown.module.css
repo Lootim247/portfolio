@@ -1,0 +1,21 @@
+.content {
+    color: var(--color-text);
+    position: relative;
+    display: inline-block
+}
+.button {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button:hover{
+    background-color: lightblue;
+    
+}
+.list {
+    background-color: white;
+    position: absolute;
+    display: block;
+}
+.option{
+    color: var(--color-text);
+}

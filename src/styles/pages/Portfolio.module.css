@@ -1,0 +1,17 @@
+.background {
+    background-color: var(--color-bg);
+}
+
+.file_structure {
+    width: 80%;
+}
+
+
+.content {
+    padding-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    font-family: "Times New Roman", Times, serif;
+}

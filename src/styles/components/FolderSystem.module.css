@@ -1,0 +1,50 @@
+.node_icon {
+    color: inherit;
+}
+.node_title {
+    color: inherit;
+    margin: 10px;
+}
+.outer {
+    color: inherit;
+}
+.bar {
+    color: black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 10%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.node {
+    display: block;
+    width: 80%;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    justify-content:left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.node:hover {
+    background-color: lightblue;
+}
+.bar_item {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+.bar_item:hover {
+    background-color: lightblue;
+}
+.container {
+    color: black;
+    background-color: white;
+    flex-direction: column;
+    display: flex;
+    align-items:center;
+    width: 100%;
+}

@@ -11,13 +11,12 @@
 }
 
 .full {
-    background-color: #2c2c2c;
+    background-color: var(--color-bg);
 }
 
 .sections section {
     margin-bottom: 10px; /* space between each major section like EDUCATION, WORK EXPERIENCE */
 }
-
 
 .experience_block ul {
     margin: 10px 20px;

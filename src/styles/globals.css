@@ -1,12 +1,20 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+    --color-bg: #0d1321;
+    --color-main: #1d2d44;
+    --color-text: #f0ebd8;
+    --color-accent: #8DB1AB;
+    --color-accent: #F2ED6F;
+    --font-main: 'Inter', sans-serif;
+  }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg: #F4E04D;
+    --color-main: #587792;
+    --color-text: #CEE397;
+    --color-accent: #8DB1AB;
+    --color-accent: #F2ED6F;
+    --font-main: 'Inter', sans-serif;
   }
 }
 
@@ -22,27 +30,6 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.tab_header {
-    position: fixed;
-    background-color: #5f5f5f;
-    padding: 30px 50px;
-    top: 0px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tab_group_left {
-    display: flex;
-    gap: 10px;
-}
-
-.tab_group_right {
-    display: flex;
-    gap: 10px;
 }
 
 * {
