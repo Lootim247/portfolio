@@ -1,4 +1,4 @@
-import data from '@/data/json/portfolio.json';
+import data from '../../data/json/portfolio.json';
 import Hero_Section from '@/components/portfolio_build/hero';
 import Title_Section from '@/components/portfolio_build/title';
 import Paragraph_Section from '@/components/portfolio_build/paragraph';
