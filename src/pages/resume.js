@@ -183,16 +183,6 @@ export default function Home({ resumeData, linkData }) {
                   ))}
                 </div>
               </section>
-
-              {/* INTERESTS */}
-              <section>
-                <h2>INTERESTS</h2>
-                <hr />
-                <div className={styles.container} id="interests">
-                  {Array.isArray(interests) ? interests.join(' / ') : ''}
-                </div>
-              </section>
-
             </div>
           </div>
         </div>

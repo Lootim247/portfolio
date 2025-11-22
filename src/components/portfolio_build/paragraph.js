@@ -8,7 +8,7 @@ import styles from '@/styles/components/PortfolioComponents.module.css'
 export default function Paragraph_Section({params}) {
     if (params) {
         return (
-            <div>
+            <div className={styles.para_text}>
                 {params.text}
             </div>
         );

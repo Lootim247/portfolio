@@ -9,7 +9,7 @@ import Tab_Header from '@/components/tab_bar'
 const home_data = {
   "position_title" : "Tufts School of Engineering Computer Science Undergraduate",
   "headshot_path" : "/elementor-placeholder-image.png",
-  "description" : `Timothy Panilaitis is a Computer Science student at the Tufts School of Engineering, with interests in machine learning, software development, and robotics. His coursework has strengthened his skills in algorithm design, programming, and system integration, while his Human Factors Engineering minor has given him tools to better understand user needs and design solutions around them.
+  "description" : `Timothy Panilaitis is a Computer Science student at the Tufts School of Engineering, with interests in machine learning, computer vision, and robotics. His coursework has strengthened his skills in algorithm design, programming, and system integration, while his Human Factors Engineering minor has given him tools to better understand user needs and design solutions around them.
 He is currently a research assistant working on a vector-based local navigation system, aiming to enable a robot to autonomously move between floors using an elevator. He also serves as a teaching assistant, mentoring students in web development and database management tools, while refining his own programming skills through independent projects. Beyond the classroom, he works as a Campus Center Manager at Tufts, ensuring smooth operations and supporting student needs.
 Looking forward, Timothy is seeking a summer internship where he can apply his technical skills, expand his knowledge in real-world settings, and grow as a developer.
 Outside of academics, he enjoys crocheting, soccer, cooking, and skiing.`

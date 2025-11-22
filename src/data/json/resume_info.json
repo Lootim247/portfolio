@@ -19,11 +19,10 @@
         "relevant_courses": [
             "Algorithms",
             "Machine Structure and Programming",
-            "Calculus 1",
-            "Calculus 2",
-            "Calculus 3",
-            "Linear Algebra",
             "Tech and Managerial Communication",
+            "Linear Algebra",
+            "Product Design",
+            "Probability and Statistics",
             "Web Development",
             "Machine Learning",
             "Artificial Intelligence"
@@ -34,6 +33,7 @@
             "C",
             "C++",
             "Python",
+            "React",
             "HTML",
             "PHP",
             "SQL",
@@ -42,28 +42,48 @@
         "tools_and_frameworks": [
             "GitHub",
             "scikit-learn",
+            "pytorch",
             "MATLAB",
             "Arduino",
             "Microsoft Office",
             "ROS1"
         ]
     },
-    "project_experience": [{
+    "project_experience": [
+            {
+            "title": "Clash Royale Elixer Tracker",
+            "organization": "Personal",
+            "dates": "October 2025 - Present",
+            "details": [
+                "Currently developing a computer vision system to track opponent elixir, starting with detecting and classifying enemy troops from gameplay using PyTorch CNNs, aiming for real-time in-game analysis.",
+                "Built and tested the first Dataset and DataLoader pipeline to efficiently process raw gameplay data, enabling initial model training and evaluation.",
+                "Began training the initial CNN architecture with preprocessing and evaluation, and implemented pytest-based unit tests to ensure reliability of the dataset and model outputs."
+            ]
+            }, {
+            "title": "LockedIn Accountability App",
+            "organization": "Personal",
+            "dates": "December 2024 - Present",
+            "details": [
+                "Architected and developed a cross-platform mobile ecosystem using React Native and Typescript, deploying to IOS, Android and Web platforms with 95% code reuse across unified codebase.",
+                "Designed and normalized a PostgreSQL database with 10+ interrelated tables, incorporating stored procedures, database triggers, and Row-Level Security (RLS) policies to enforce data integrity and granular access control",
+                "Developed a secure authentication system leveraging JWT tokens, email verification, and password reset flows, alongside a hybrid secure storage solution (SecureStore, AsyncStorage) to protest user credentials across platforms.",
+                "Implemented real-time social features, including a friend system, ephemeral stores with 24-hour auto-expiration, group chat, and push notifications powered by Firebase, enabling seamless, dynamic user interaction."
+            ]
+            }, {
             "title": "COMP 135: Machine Learning Coursework Projects",
             "organization": "Tufts University",
             "dates": "May - August 2025",
             "details": [
-                "Applied feature engineering to transform raw data into more informative representations, improving classification accuracy on complex datasets.",
-                "Built and evaluated neural network models with different solvers and activation functions, analyzing tradeoffs in convergence and performance."
-            ]
+                "Applied feature engineering to a training set to improve the classification accuracy of a logistic regression model using image sharpening, feature selection strategies, and k-fold valuation.",
+                "Built familiarity with scikit-learn's training parameters and error metrics through iterative testing to practice real field work."]
             }, {
             "title": "JumboHack",
             "organization": "Tufts University",
             "dates": "February 2025",
             "details": [
-                "Led the software development for a braille printing robot, collaborating with another Computer Science student to create a codebase that converted PDFs and text files into Arduino motor instructions.",
-                "Worked closely with a team of Mechanical Engineers, taking initiative to research and implement motor and Arduino wiring using documentation and online resources.",
-                "Contributed to a winning project in the 'Mad Hatter' track, competing against 325 participants in an open-category challenge."
+                "Prototyped an accessibility device in team of 2 that converts text or pdf files into arduino motor instructions for braille printing through a C++/Arduino codebase.",
+                "Implemented prototype by comparing traits of printing stamp design while balancing the limitations of our 3-person Mechanical Engineering team.",
+                "Conducted research on braille accessibility device market and interviewed potential product users from the Massachusetts Association for the Blind and Visually Impaired to explore commercial viability"
             ]
         }
     ],
@@ -73,8 +93,9 @@
         "title": "Human Robot Interaction Researcher",
         "dates": "September 2025 - Present",
         "details": [
-            "Developed navigation system using ROS to manage local and global goals through a vector-based approach.",
-            "Managed individual time effectively to contribute maximum value to projects."
+            "Restored an existing depreciated Python/ROS codebase through research into new and depreciated documentation to manage local and global goals with a vector-field based approach.",
+            "Improved 5-step sensor to movement pipeline by reworking the obstacle avoidance module to follow OOP principles, allowing the robot to accurately and quickly avoid non-static obstacles while moving.",
+            "Managed 10 hours of weekly individual work by effectively communicating with leadership and maintaining organization with Github to contribute maximum value."
         ]
         }, {
         "organization": "Tufts University",
@@ -82,7 +103,7 @@
         "title": "Web Programming Teaching Assistant",
         "dates": "September 2025 - Present",
         "details": [
-            "Provided technical guidance and feedback to ~20 students, fostering growth in web programming skills."
+            "Provide technical assistance to ~18 students by answering ~4 piazza questions, grading ~10 assignments, and leading ~60 minutes of office hours weekly to help foster full stack programming skills at a graduate level."
         ]
         }, {
         "organization": "Tufts University",
@@ -90,17 +111,10 @@
         "title": "Campus Center Manager",
         "dates": "December 2024 - Present",
         "details": [
-            "Ensured smooth operations and building security as the sole authority during shifts, demonstrating reliability and accountability.",
-            "Independently managed room access, opening and closing spaces per student and event needs.",
+            "Ensured smooth operations and building security as the sole authority during shifts through regular monitoring.",
             "Assisted students and campus groups with information and problem resolution, fostering a supportive campus environment."
         ]
         }
-    ],
-    "interests": [
-        "Fiber Arts (crochet)",
-        "Soccer",
-        "Skiing",
-        "Game Development"
     ],
     "notes": {
         "contact_mailto": "mailto:timothy.panilaitis@tufts.edu"

@@ -1,10 +1,18 @@
 [
     {
-        "id":"1",
-        "title":"Braille",
+        "id":"cs135_p1",
+        "title":"COMP 135: Machine Learning Coursework Projects",
         "div_struct": [
-            {"type": "header", "props": {
-            }}
+            {"type": "Title_Section", 
+            "props": 
+                {"text": "COMP 135: Machine Learning Coursework Projects", 
+                "subtext": "Feature Engineering and Scikit-Learn Practice"}},
+            {"type": "Paragraph_Section", "props": 
+                {"text": "rachael is beautiful and i love herx"}},
+            {"type": "MultiPDF", "props": {"pdfs": [
+                {"src" : "/pdfs/cs135_p1.pdf", "title": "sample"},
+                {"src" : "/pdfs/CS160_HW10.pdf", "title": "sample2"}
+            ]}}
         ]
     }
 ]

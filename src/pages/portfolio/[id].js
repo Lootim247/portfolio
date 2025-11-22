@@ -2,9 +2,10 @@ import data from '../../data/json/portfolio.json';
 import Hero_Section from '../../components/portfolio_build/hero';
 import Title_Section from '../../components/portfolio_build/title';
 import Paragraph_Section from '../../components/portfolio_build/paragraph';
-import Text_Image_Section from '../../components/portfolio_build/text_image';
+import PDF from '@/components/portfolio_build/pdf';
+import MultiPDF from '@/components/portfolio_build/multi_pdf';
 
-const componentMap = { Hero_Section, Title_Section, Paragraph_Section, Text_Image_Section };
+const componentMap = { Hero_Section, Title_Section, Paragraph_Section, PDF, MultiPDF};
 
 export async function getStaticPaths() {
   return {
@@ -36,7 +37,7 @@ export default function PortfolioPage({ item }) {
       {item.div_struct.map((block, idx) => {
         const Component = componentMap[block.type];
         if (!Component) return null;
-        return <Component key={idx} {...block.props} />;
+        return <Component key={idx} params={block.props} />;
       })}
     </main>
   );
