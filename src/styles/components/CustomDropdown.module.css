@@ -1,21 +1,133 @@
-.content {
-    color: var(--color-text);
-    position: relative;
-    display: inline-block
+/* CustomDropdown.module.css */
+
+/* Container holding button + list */
+.content_drop {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: var(--color-text);
 }
+
+.content_drop.selected {
+  background-color: var(--color-accent);
+}
+
+/* The visible trigger button */
 .button {
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  text-align: left;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(16, 42, 67, 0.12);
+  background: var(--color-main);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
+  box-shadow: 0 1px 0 rgba(16, 42, 67, 0.03);
 }
-.button:hover{
-    background-color: lightblue;
-    
+
+.button.selected {
+  background: var(--color-accent);
 }
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus,
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.14);
+  border-color: var(--color-accent);
+}
+
+.button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dropdown list */
 .list {
-    background-color: white;
-    position: absolute;
-    display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: var(--color-bg);
+  border: 1px solid rgba(16, 42, 67, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(16, 42, 67, 0.08);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 40;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 140ms ease, transform 160ms ease;
+  transform-origin: top center;
 }
-.option{
-    color: var(--color-text);
+
+/* small animation */
+.content_drop .list {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* option row */
+.option {
+  list-style: none;
+  padding: 6px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-text);
+  background: transparent;
+  transition: background-color 140ms ease, color 120ms ease;
+  font-size: 14px;
+}
+
+.option:hover,
+.option:active {
+  background-color: rgba(52, 152, 219, 0.10);
+  color: var(--color-text);
+}
+
+.option:focus,
+.option:focus-visible {
+  outline: none;
+  background-color: rgba(52, 152, 219, 0.14);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.08) inset;
+}
+
+.option.selected {
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: rgba(52, 152, 219, 0.06);
+}
+
+.option + .option {
+  margin-top: 4px;
+}
+
+/* scrollbar */
+.list::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.list::-webkit-scrollbar-thumb {
+  background: rgba(16, 42, 67, 0.12);
+  border-radius: 8px;
+}
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* responsive tweaks */
+@media (max-width: 420px) {
+  .content_drop { max-width: 100%; }
+  .button { padding: 9px 12px; font-size: 13px; }
+  .option { font-size: 13px; padding: 9px 10px; }
 }

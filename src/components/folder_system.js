@@ -1,32 +1,42 @@
 "use client"; // needed for interactivity (state, events, etc.)
-
 import { useState, useEffect } from "react";
+import Image from 'next/image';
+import { useRouter } from "next/router";
 import styles from '@/styles/components/FolderSystem.module.css'
 import CustomDropdown from "./drop_down";
 
-function Node( {id, name, type, path, nav_to} ) {
-    const new_path = [...path, {id: id, name: name}]
+// class for ease of rendering later
+function Node({ id, name, type, path, nav_to, link }) {
+  const router = useRouter();
+  const new_path = [...path, { id, name }];
 
-    let icon = null
+  let icon = null;
+  if (type === "folder") {
+    icon = "/icons/folder.svg";
+  } else {
+    icon = "/icons/file2.svg";
+  }
+
+  const handleClick = () => {
     if (type === "folder") {
-        icon = null
-    } else {
-        icon = null
+      nav_to(new_path);
+    } else if (link) {
+      router.push(link);
     }
+  };
 
-    return (
-        <div className={styles.node} onClick={() => type === "folder" && nav_to(new_path)}>
-            <div className={styles.node_icon}> 
-                {icon}
-            </div>
-            <div className={styles.node_title}> {name} </div>
-        </div>
-    );
+  return (
+    <div className={styles.node} onClick={handleClick}>
+      <Image src={icon} alt={type} width={24} height={24} />
+      <div className={styles.node_title}>{name}</div>
+    </div>
+  );
 }
 
-export default function FolderSystem( {fileJSON} ) {
+
+export default function FolderSystem( {fileJSON, filter_bars} ) {
     // keep track of current path, as well as the node and its children
-    let json_data = addAttr(addIds(fileJSON));
+    let json_data = addAttrIds(fileJSON);
     
     const root = {
         name: json_data.name,
@@ -39,24 +49,13 @@ export default function FolderSystem( {fileJSON} ) {
     const [in_search, set_in_search] = useState(false)
     const [attributes, set_attributes] = useState([])
 
-    function addIds(node, prefix = "") {
+    function addAttrIds(node, prefix = "") {
         const id = prefix ? `${prefix}-${node.name}` : node.name;
+        node.attributes = Array.isArray(node.attributes) ? node.attributes : [];
         node.id = id;
-
         if (node.children) {
             node.children.forEach((child, index) => {
-                addIds(child, `${id}-${index}`);
-            });
-        }
-
-        return node;
-    }
-
-    function addAttr(node) {
-        node.attributes = Array.isArray(node.attributes) ? node.attributes : [];
-        if (node.children) {
-            node.children.forEach((child) => {
-                addAttr(child)
+                addAttrIds(child, `${id}-${index}`);
                 node.attributes = [...node.attributes, ...child.attributes]
             })
             node.attributes = [...new Set(node.attributes)]
@@ -113,6 +112,23 @@ export default function FolderSystem( {fileJSON} ) {
         set_arr(curr_JSON.children)
     } 
 
+    function updateAttribute(value, action) {
+        set_attributes(prev => {
+            // add attribute
+            if (action === "a") {
+            return prev.includes(value) ? prev : [...prev, value];
+            // remove attribute
+            } else if (action === "r") {
+            return prev.filter(attr => attr !== value);
+            } else {
+            return prev;
+            }
+        });
+    }
+
+
+    let items = filter(arr, null, attributes)
+
     return (
         <div className={styles.outer}>
         <div className={styles.search}>
@@ -121,63 +137,55 @@ export default function FolderSystem( {fileJSON} ) {
             onClick={()=>{search(name)}}></div>
             <div className={styles.input_box}></div>
         </div>
-            
+        
+        {/* Build the branch bar for easier routing */}
         <div className={styles.bar}>
-            {curr_path.reduce((acc, node, index) => {
-                // accumulate the path up to this node
-                const new_path = curr_path.slice(0, index + 1);  
+            {(() => {
+                const maxLength = 6;
                 let displayPath = [];
 
-                if (curr_path.length <= 6) {
-                    displayPath = curr_path.map(
-                        (obj, i) => i === curr_path.length - 1 ? 
-                                                        obj.name + ":" :  
-                                                        obj.name + " > ");
+                if (curr_path.length <= maxLength) {
+                displayPath = curr_path.map((node, i) =>
+                    i === curr_path.length - 1 ? `${node.name}:` : `${node.name} > `
+                );
                 } else {
-                    displayPath = [
-                        curr_path[0].name + " > ",
-                        "... > ",
-                        curr_path[curr_path.length - 5].name + " > ",
-                        curr_path[curr_path.length - 4].name + " > ",
-                        curr_path[curr_path.length - 3].name + " > ",
-                        curr_path[curr_path.length - 2].name + " > ",
-                        curr_path[curr_path.length - 1].name + ":"
-                    ];
-
-                    for (i in curr_path.length - 7) {
-                        displayPath.splice(2, 0, "")
-                    }
+                displayPath = [
+                    `${curr_path[0].name} > `,
+                    "... > ",
+                    ...curr_path.slice(-5, -1).map(node => `${node.name} > `),
+                    `${curr_path[curr_path.length - 1].name}:`
+                ];
                 }
 
-                // push JSX element
-                acc.push(
+                return curr_path.map((node, index) => (
                 <div
                     key={node.id}
                     className={styles.bar_item}
-                    onClick={() => nav_to(new_path)}
+                    onClick={() => nav_to(curr_path.slice(0, index + 1))}
                 >
                     {displayPath[index]}
                 </div>
-                );
-
-                return acc;
-            }, [])}
+                ));
+            })()}
         </div>
 
+
+        {/* If filter bars is populated render */}
+        {filter_bars && 
         <div className={styles.filter_bar}>
-            <div> 
-                <CustomDropdown 
-                    options={["c++", "python"]} 
-                    on_select={(value) =>
-                        set_attributes(prev => prev.includes(value) ? prev : [...prev, value])
-                    }
-                    placeholder={"Languages"}/>
-        
-            </div>
+            {filter_bars.map((bar, i) => (
+                <CustomDropdown
+                key={i} 
+                options={bar.options} 
+                on_select={(value, action) => updateAttribute(value, action)}
+                placeholder={bar.placeholder}/>
+            ))}
         </div>
-            
+        }
+
         <div className={styles.container}>
-            {filter(arr, null, attributes).map((child) => (
+            {items.length == 0 ? <p>No Results</p> :
+            items.map((child) => (
                 <Node
                     key={child.id}
                     id={child.id}
@@ -185,6 +193,7 @@ export default function FolderSystem( {fileJSON} ) {
                     type={child.type} 
                     path={curr_path}
                     nav_to={nav_to}
+                    link={child.type == "folder" ? null : child.link}
                 />
             ))}
         </div>

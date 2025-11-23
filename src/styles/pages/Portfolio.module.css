@@ -2,16 +2,29 @@
     background-color: var(--color-bg);
 }
 
-.file_structure {
-    width: 80%;
+.page_wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    box-sizing: border-box;
 }
 
+.file_structure {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    padding: 20px;
+}
 
 .content {
-    padding-top: 100px;
+    padding-top: 40px;
     width: 100%;
     display: flex;
-    justify-content: center;
-    font-size: 13px;
+    flex-direction: column; /* make flex children respect flex rules */
+    flex: 1;               /* allow content to grow inside page_wrapper */
+    justify-content: flex-start;
+    font-size: 18px;
     font-family: "Times New Roman", Times, serif;
 }

@@ -1,14 +1,44 @@
 {
-    "name": "root",
+    "name": "Portfolio",
     "type": "folder",
     "children": [
     {
-        "name": "Class Work",
+        "name": "Relevant Classes",
         "type": "folder",
-        "attributes": ["c++"],
+        "attributes": [],
         "children" : [
             {
-                
+                "name": "CS160 : Algorithms",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS135 : Machine Learning",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS131 : Artificial Intelligence",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS120 : Web Development",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS114 : Network Security",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS105 : Programming Languages",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS40  : Machine Structure and Assembly",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "CS15  : Data Structures",
+                "type": "file",
+                "link" : ""
             }
         ]
     },
@@ -17,15 +47,26 @@
         "type": "folder",
         "attributes": [],
         "children" : [
-            {}
+            
         ]
     },
     {
-        "name": "Projects",
+        "name": "Personal Projects",
         "type": "folder",
-        "attributes": [],
         "children" : [
-            {}
+            {
+                "name": "Clash Royale Elixir Tracker",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "Portfolio Website",
+                "type": "file",
+                "link" : ""
+            }, {
+                "name": "LockedIn Accountability App",
+                "type": "file",
+                "link" : ""
+            }
         ]
     }
     ]
