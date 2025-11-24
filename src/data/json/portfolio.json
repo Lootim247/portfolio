@@ -8,11 +8,34 @@
                 {"text": "COMP 135: Machine Learning Coursework Projects", 
                 "subtext": "Feature Engineering and Scikit-Learn Practice"}},
             {"type": "Paragraph_Section", "props": 
-                {"text": "rachael is beautiful and i love herx"}},
+                {"text": ""}},
             {"type": "MultiPDF", "props": {"pdfs": [
-                {"src" : "/pdfs/cs135_p1.pdf", "title": "sample"},
-                {"src" : "/pdfs/CS160_HW10.pdf", "title": "sample2"}
+                {"src":"/pdfs/cs135_p1.pdf", "title":"Project Report", "type":"pdf"},
+                {"src":"/code/sample_code.txt", "title":"Feature Algorithm", "type":"txt", "language": "Python"}
             ]}}
+        ]
+    }, {
+        "id":"cr_vision",
+        "title":"Clash Royale Elixir Tracker",
+        "div_struct": [
+            {"type": "Title_Section", 
+            "props": 
+                {"text": "Clash Royale Elixir Tracker", 
+                "subtext": "Data Pipelines and Pytorch Practice",
+                "github": "https://github.com/Lootim247/CR_Vision"}},
+            {"type": "Paragraph_Section", "props": 
+                {"text": "This project aims to use computer vision to track a normally hidden resource. In Clash Royale, you place troops, spells, and towers to defend your own King Tower and attack your enemies. The resource used to place these towers is called elixir. It is generated at a steady rate and consumed when deploying troops. A core part of this game is that, at any given moment, you do not know the exact elixir count of your opponent. Instead, you infer the quantity based on the timing of their placements and the cost of each unit. \n\nAs a computer scientist, this mental calculation can be automated! Thus, I introduce the Clash Royale Elixir Tracker, a project designed to enhance my model training capabilities using PyTorch. The proposed program will take a series of images as input and output the current elixir range (the range of possible elixir values). The data will pass through an initial CNN model that identifies a general area where a troop was deployed. This area will then be processed and passed through a second CNN that outputs class predictions. Based on these predictions, the proposed elixir range will be updated. \n\nCurrently, the data pipeline has been initialized. Much of my work has focused on optimizing how to process video data efficiently, as this type of data is extremely memory-intensive. For training, I recorded and labeled gameplay, storing it as an MP4 file. You might assume that for training you could simply store all frames in a single large NumPy array, but I would strongly caution against it—my own naive attempt turned a 3-minute video into 60GB. After experimenting with different approaches, such as seeking frames on demand, I found a nearly optimal storage method: I stored each frame individually but first heavily condensed it, reducing each video to roughly 2GB. \n\nI am excited to continue training and I will continue to post results!"}}
+        ]
+    }, {
+        "id":"cr_vision",
+        "title":"Web Programming TA",
+        "div_struct": [
+            {"type": "Title_Section", 
+            "props": 
+                {"text": "Clash Royale Elixir Tracker", 
+                "subtext": "Data Pipelines and Pytorch Practice"}},
+            {"type": "Paragraph_Section", "props": 
+                {"text": ""}}
         ]
     }
 ]

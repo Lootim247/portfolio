@@ -1,9 +1,11 @@
-"use client";
 import { useState, useEffect, useRef, useMemo } from "react";
 import styles from "@/styles/components/PortfolioComponents.module.css";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docca } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 export default function MultiPDF({ params }) {
   const [openInd, setOpenInd] = useState(0);
+  const [txtCache, setTxtCache] = useState({});
   
   const items = useMemo(() => {
     if (!params) return [];
@@ -12,25 +14,22 @@ export default function MultiPDF({ params }) {
       : params?.pdfs || params?.pdf_params || params?.arr || [];
   }, [params]);
 
-  const pdfCache = useRef({});
-
-  useEffect(() => {
-    items.forEach((item) => {
-      if (!pdfCache.current[item.src]) {
-        fetch(item.src)
-          .then((res) => res.blob())
-          .then((blob) => {
-            const url = URL.createObjectURL(blob);
-            pdfCache.current[item.src] = url;
-          });
-      }
-    });
-  }, [items]);
-
-  if (!items || items.length === 0) return <div>No PDFs provided.</div>;
+  async function loadTxt(url) {
+    const res = await fetch(url);
+    const text = await res.text();
+    return text;
+  }
 
   const selected = items[openInd];
-  const cachedSrc = pdfCache.current[selected.src] || selected.src;
+  useEffect(() => {
+    if (selected?.type === "txt" && !txtCache[selected.src]) {
+      loadTxt(selected.src).then((text) => {
+        setTxtCache((prev) => ({ ...prev, [selected.src]: text }));
+      });
+    }
+  }, [selected, txtCache]);
+
+  if (!items || items.length === 0) return <div>No PDFs provided.</div>;
 
   return (
     <div className={styles.multi_pdf_container}>
@@ -51,17 +50,25 @@ export default function MultiPDF({ params }) {
       </div>
 
       <div className={styles.pdf_right}>
-        <object
-          data={cachedSrc}
-          type="application/pdf"
-          width="100%"
-          height="100%"
-        >
-          <p>
-            Your browser cannot display PDFs.{" "}
-            <a href={selected.src}>Download instead</a>
-          </p>
-        </object>
+        {selected.type === "pdf" ? (
+          <object data={selected.src} type="application/pdf" width="100%" height="100%">
+            <p>
+              Your browser cannot display PDFs. <a href={selected.src}>Download instead</a>
+            </p>
+          </object>
+        ) : (
+          <SyntaxHighlighter
+            className={styles.code}
+            language={selected.language}
+            style={docca}
+            showLineNumbers={true}
+            codeTagProps={{
+              style: { whiteSpace: "pre-wrap" }
+            }}
+          >
+            {txtCache[selected.src] || "Loading..."}
+          </SyntaxHighlighter>
+        )}
       </div>
     </div>
   );

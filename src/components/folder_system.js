@@ -1,6 +1,7 @@
 "use client"; // needed for interactivity (state, events, etc.)
 import { useState, useEffect } from "react";
 import Image from 'next/image';
+import { useMemo } from "react";
 import { useRouter } from "next/router";
 import styles from '@/styles/components/FolderSystem.module.css'
 import CustomDropdown from "./drop_down";

@@ -1,0 +1,19 @@
+fig, axs = plt.subplots(1, 4, figsize=(12, 4))  # 1 row, 2 columns
+
+axs[0].imshow(closed, cmap='gray')
+axs[0].set_title("Closed Image")
+axs[0].axis('off')  # hide axis ticks
+
+axs[1].imshow(closed_b, cmap='gray')
+axs[1].set_title("Bilateral Filter then Closed")
+axs[1].axis('off')
+
+axs[2].imshow(closed_m, cmap='gray')
+axs[2].set_title("Median Blur then Closed")
+axs[2].axis('off')
+
+axs[3].imshow(closed_g, cmap='gray')
+axs[3].set_title("Guassian Blur then Closed")
+axs[3].axis('off')
+plt.tight_layout()
+plt.show()
