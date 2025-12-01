@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/tim-tracker",
-      "destination": "https://tim-tracker-sigma.vercel.app/project2"
+      "destination": "https://tim-tracker-sigma.vercel.app/tim-tracker"
     },
     {
       "source": "/tim-tracker/:path*",
-      "destination": "https://tim-tracker-sigma.vercel.app/project2/:path*"
+      "destination": "https://tim-tracker-sigma.vercel.app/tim-tracker/:path*"
     }
   ]
 }
