@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/tim_tracker/:path*",
+      "destination": "https://tim-tracker-sigma.vercel.app/:path*"
+    }
+  ]
+}
