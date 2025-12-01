@@ -25,7 +25,7 @@
             }, {
                 "name": "CS120 : Web Development",
                 "type": "file",
-                "link" : "",
+                "link" : "portfolio/cs120",
                 "attributes" : ["HTML", "PHP", "SQL", "NoSQL", "React"]
             }, {
                 "name": "CS114 : Network Security",

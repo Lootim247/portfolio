@@ -3,7 +3,7 @@ import Hero_Section from '../../components/portfolio_build/hero';
 import Title_Section from '../../components/portfolio_build/title';
 import Paragraph_Section from '../../components/portfolio_build/paragraph';
 import PDF from '@/components/portfolio_build/pdf';
-import MultiPDF from '@/components/portfolio_build/multi_pdf';
+import MultiPDF from '@/components/portfolio_build/multi_file';
 
 const componentMap = { Hero_Section, Title_Section, Paragraph_Section, PDF, MultiPDF};
 

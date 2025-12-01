@@ -55,9 +55,10 @@ export default function MultiPDF({ params }) {
             <p>
               Your browser cannot display PDFs. <a href={selected.src}>Download instead</a>
             </p>
-          </object>
-        ) : (
-          <SyntaxHighlighter
+          </object> ) 
+          
+        : selected.type === "txt" ? (
+            <SyntaxHighlighter
             className={styles.code}
             language={selected.language}
             style={docca}
@@ -65,10 +66,17 @@ export default function MultiPDF({ params }) {
             codeTagProps={{
               style: { whiteSpace: "pre-wrap" }
             }}
-          >
-            {txtCache[selected.src] || "Loading..."}
-          </SyntaxHighlighter>
-        )}
+            >
+              {txtCache[selected.src] || "Loading..."}
+            </SyntaxHighlighter>
+          ) : (
+            <iframe
+              src={selected.src}
+              height="100%"
+              width="100%"
+              title={selected.title}
+            />
+          )}
       </div>
     </div>
   );

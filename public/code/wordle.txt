@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    ...
+</head>
+
+<body>
+    <h1>WORDLE</h1>
+    <script>
+        let NUM_LETTERS = 5;
+        let NUM_GUESSES = 6;
+
+        const fiveLetterWords = [
+            "apple", "house", "table", "chair", "light", 
+            "grass", "plane", "water", "stone", "dream", 
+            "music", "world", "earth", "stars", "cloud", 
+            "sweet", "pizza", "laugh", "heart", "smile", 
+            "night", "smoke", "flame", "beach", "sugar", 
+            "dance", "liver", "vocal", "green", "stone"
+        ];
+
+        class WordleGame {
+            constructor(possible_words) {
+                if (!possible_words) {
+                    return null
+                }
+                this.answer = null;
+                this.guesses = [];
+                this.guess_states = {};
+                this.letter_states = {};
+                this.possible_words = possible_words
+            }
+
+            new_game() {
+                // this is the first thing that comes up when you search JavaScript random
+                let random_num = Math.floor(Math.random() * (this.possible_words.length + 1))
+                this.answer = this.possible_words[random_num]
+                this.start_game()
+            }
+
+            start_game() {
+                console.log(this.answer)
+
+                // Array of letters from a-z
+                const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");  
+                // initialize to absent
+                alphabet.forEach(letter => {
+                    this.letter_states[letter] = 'absent';  
+                });
+
+                // reset button area
+                let button_area = document.getElementById('buttons')
+                button_area.innerHTML = '<button onclick="game.enter_answer()">Enter</button>'
+                button_area.innerHTML += '<input id="guess_input" value="">'
+                document.getElementById("guess_input").setAttribute("maxlength", NUM_LETTERS);
+
+                // clear all answers
+                this.guess_states = {}
+                this.guesses = []
+
+                this.paint_board()
+            }
+
+            paint_board() {
+                let board_str = ''
+                this.guesses.forEach(element => {
+                    board_str += '<div class="board_row">'
+                    // loop through each letter
+                    for (let i = 0; i < NUM_LETTERS; i++) {
+                        board_str += `<div class="box ${this.guess_states[element][i]}">`
+                        board_str += element[i]
+                        board_str += '</div>'
+                    }
+                    board_str += '</div>'
+                });
+                
+                let empty_rows = NUM_GUESSES - this.guesses.length
+                    for (let i = 0; i < empty_rows; i++) {
+                        board_str += '<div class="board_row">'
+                        for (let j = 0; j < NUM_LETTERS; j++) {
+                            board_str += `<div class="box absent">`
+                            board_str += '</div>'
+                        }
+                        board_str += '</div>'
+                    }
+                document.getElementById("board").innerHTML = board_str
+
+                this.render_keyboard()
+            }
+
+            render_keyboard() {
+                let row1 = "qwertyuiop".split('');
+                let row2 = "asdfghjkl".split('')
+                let row3 = "zxcvbnm".split('')
+                let rows = [row1, row2, row3]
+                let keyboardDiv = document.getElementById("keyboard");
+                let str =''
+                rows.forEach(row => {
+                    str += '<div class="letter_row">'
+                    row.forEach(letter => {
+                        str += `<div class="letter_box ${this.letter_states[letter]}">`
+                        str += letter
+                        str += '</div>'
+                    });
+                    str += '</div>'
+                });
+                keyboardDiv.innerHTML = str
+            }
+
+            get_status(input) {
+                let status = [];
+                let remaining_answer = [...this.answer];
+
+                //Check for correct positions
+                for (let i = 0; i < NUM_LETTERS; i++) {
+                    if (input[i] === this.answer[i]) {
+                        status[i] = 'correct'; 
+                        remaining_answer[i] = null; 
+                    }
+                }
+
+                // Check for present letters
+                for (let i = 0; i < NUM_LETTERS; i++) {
+                    if (status[i] !== 'correct') { 
+                        if (remaining_answer.includes(input[i])) {
+                            status[i] = 'present';
+                            remaining_answer[remaining_answer.indexOf(input[i])] = null;
+                        } else {
+                            status[i] = 'absent';
+                        }
+                    }
+                }
+
+                return status;
+            }
+
+            async check_validity(word) {
+                const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+                const response = await fetch(url);
+                try {
+                    const data = await response.json();
+                    
+                    // make sure data exits, it is an array, and that definitions exist
+                    if (data.title === "No Definitions Found" || !data || !Array.isArray(data)) {
+                        return false;
+                    }
+                
+                    return true;  // If word is valid, return true
+                } catch (error) {
+                    return false
+                }
+            }
+
+            update_letters(latest_status, guess) {
+                for (let i = 0; i < NUM_LETTERS; i++) {
+                    let char = guess[i];
+                    if (latest_status[i] == 'correct') {
+                        this.letter_states[char] = 'correct';
+                    }  else if (latest_status[i] == 'present') {
+                        if (this.letter_states[char] == 'absent') {
+                            this.letter_states[char] = 'present';
+                        }
+                    }
+                }
+            }
+
+            async enter_answer() {
+                let input_field = document.getElementById('guess_input')
+                let input_value = input_field.value.toLowerCase()
+
+                // make sure right size (not waste any API calls)
+                if (input_value.length !== NUM_LETTERS) {
+                    input_field.value = ''
+                    return 
+                }
+                // check validity
+                let valid_word = await this.check_validity(input_value)
+                if (!valid_word) {
+                    input_field.value = ''
+                    return
+                }
+                document.getElementById('guess_input').value = ''
+                this.guesses.push(input_value)
+                
+                // update the dictionary
+                let guess_status = this.get_status(input_value)
+                this.guess_states[input_value] = guess_status
+                
+                // update the board
+                this.update_letters(guess_status, input_value)
+                this.paint_board()
+                
+                // check win/loss conditiosn
+                if (guess_status.every(status => status === 'correct')) {
+                    this.display(true);
+                } else if (this.guesses.length == NUM_GUESSES) {
+                    this.display(false)
+                }
+            }
+
+            display(final_status) {
+                let button_area = document.getElementById('buttons')
+                let str = ''
+                if (final_status) {
+                    str += "<text>VICTORY!</text>"
+                } else {
+                    str += "<text>DEFEAT!</text>"
+                    alert(`The answer was ${this.answer}`)
+                }
+                str += '<button onclick="game.new_game()">Play Again!</button>'
+                button_area.innerHTML = str;
+            }
+        }
+        let game = new WordleGame(fiveLetterWords)
+
+        window.onload = function() {
+            game.new_game();
+            document.getElementById("guess_input").setAttribute("maxlength", NUM_LETTERS);
+        };
+
+    </script>
+
+    <div class="board" id="board"></div>
+    <div class="button_array" id="buttons"></div>
+    <div class="keyboard" id="keyboard"></div>
+</body>
+
+</html>

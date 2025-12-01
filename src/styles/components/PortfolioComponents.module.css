@@ -142,7 +142,6 @@
   width: 100%;
 }
 
-/* Full-size code block */
 .code {
   background-color: #1e1e1e;
   color: #d4d4d4;
@@ -150,15 +149,14 @@
   font-size: 14px;
   line-height: 1.5;
   padding: 16px;
-  border-radius: 0; /* remove rounding to match PDF container exactly */
+  border-radius: 0;
   overflow-x: auto;
   overflow-y: auto;
-  width: 100%;   /* fill container */
-  height: 100%;  /* fill container */
-  white-space: pre; /* preserve spacing and line breaks */
+  width: 100%;  
+  height: 100%; 
+  white-space: pre;
   box-sizing: border-box;
 }
-
 
 .code::-webkit-scrollbar {
   height: 8px;
