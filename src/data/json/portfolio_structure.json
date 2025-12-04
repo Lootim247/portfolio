@@ -8,62 +8,14 @@
         "attributes": [],
         "children" : [
             {
-                "name": "CS160 : Algorithms",
-                "type": "file",
-                "link" : "",
-                "attributes" : []
-            }, {
                 "name": "CS135 : Machine Learning",
                 "type": "file",
                 "link" : "",
                 "attributes" : ["Python", "scikit-learn"]
             }, {
-                "name": "CS131 : Artificial Intelligence",
-                "type": "file",
-                "link" : "",
-                "attributes" : []
-            }, {
                 "name": "CS120 : Web Development",
                 "type": "file",
                 "link" : "portfolio/cs120",
-                "attributes" : ["HTML", "PHP", "SQL", "NoSQL", "React"]
-            }, {
-                "name": "CS114 : Network Security",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["Python"]
-            }, {
-                "name": "CS105 : Programming Languages",
-                "type": "file",
-                "link" : "",
-                "attributes" : []
-            }, {
-                "name": "CS40  : Machine Structure and Assembly",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["C", "Assembly"]
-            }, {
-                "name": "CS15  : Data Structures",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["C++"]
-            }
-        ]
-    },
-    {
-        "name": "Work Experiences",
-        "type": "folder",
-        "attributes": [],
-        "children" : [
-            {
-                "name": "Human Robot Interaction Researcher",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["Python", "ROS1", "GitHub"]
-            }, {
-                "name": "Web Programming Teacher's Assistant",
-                "type": "file",
-                "link" : "",
                 "attributes" : ["HTML", "PHP", "SQL", "NoSQL", "React"]
             }
         ]
@@ -77,16 +29,6 @@
                 "type": "file",
                 "link" : "portfolio/cr_vision",
                 "attributes" : ["Python", "pytorch", "GitHub"]
-            }, {
-                "name": "Portfolio Website",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["React", "GitHub"]
-            }, {
-                "name": "LockedIn Accountability App",
-                "type": "file",
-                "link" : "",
-                "attributes" : ["React", "SQL", "GitHub"]
             }
         ]
     }
