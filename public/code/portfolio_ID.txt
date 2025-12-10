@@ -1,0 +1,23 @@
+...
+
+const componentMap = { Hero_Section, Title_Section, Paragraph_Section, PDF, MultiPDF};
+
+export default function PortfolioPage({ item }) {
+  if (!item) {
+    return (
+      <main className="p-8">
+        <h1>404: Item Not Found</h1>
+      </main>
+    );
+  }
+
+  return (
+    <main className="p-8">
+      {item.div_struct.map((block, idx) => {
+        const Component = componentMap[block.type];
+        if (!Component) return null;
+        return <Component key={idx} params={block.props} />;
+      })}
+    </main>
+  );
+}

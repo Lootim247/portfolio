@@ -1,0 +1,18 @@
+{
+        "id":"portfolio",
+        "title":"The Designing of my Portfolio!",
+        "div_struct": [
+            {"type": "Title_Section", 
+            "props": 
+                {"text": "The Designing of my Portfolio!", 
+                "subtext": "Practice Designing Simplistic Scalable Architecture",
+                "github": "https://github.com/Lootim247/portfolio"}},
+            {"type": "Paragraph_Section", "props": 
+                {"text": "Welcome to my portfolio! This was designed using Next.js ...
+            {"type": "MultiPDF", "props": {"pdfs": [
+                {"src":"/code/portfolio_ID.txt", "title":"1. Page Generation", "type":"txt", 
+                    "language": "HTML"},
+                {"src":"/html/wordle.html", "title":"2. Generation JSON", "type":"html"}
+            ]}}
+        ]
+    }

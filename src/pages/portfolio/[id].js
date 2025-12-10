@@ -10,7 +10,7 @@ const componentMap = { Hero_Section, Title_Section, Paragraph_Section, PDF, Mult
 export async function getStaticPaths() {
   return {
     paths: data.map(item => ({ params: { id: String(item.id) } })),
-    fallback: false, // or 'blocking' if you want non-prebuilt paths
+    fallback: false,
   };
 }
 

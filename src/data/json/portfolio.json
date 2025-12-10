@@ -1,6 +1,6 @@
 [
     {
-        "id":"cs135_p1",
+        "id":"cs135",
         "title":"COMP 135: Machine Learning Coursework Projects",
         "div_struct": [
             {"type": "Title_Section", 
@@ -10,8 +10,7 @@
             {"type": "Paragraph_Section", "props": 
                 {"text": ""}},
             {"type": "MultiPDF", "props": {"pdfs": [
-                {"src":"/pdfs/cs135_p1.pdf", "title":"Project Report", "type":"pdf"},
-                {"src":"/code/sample_code.txt", "title":"Feature Algorithm", "type":"txt", "language": "Python"}
+                {"src":"/pdfs/cs135_p1.pdf", "title":"Project Report", "type":"pdf"}
             ]}}
         ]
     }, {
@@ -39,6 +38,22 @@
             {"type": "MultiPDF", "props": {"pdfs": [
                 {"src":"/code/wordle.txt", "title":"1. Wordle Sample Code", "type":"txt", "language": "HTML"},
                 {"src":"/html/wordle.html", "title":"2. Playable Wordle", "type":"html"}
+            ]}}
+        ]
+    }, {
+        "id":"portfolio",
+        "title":"The Designing of my Portfolio!",
+        "div_struct": [
+            {"type": "Title_Section", 
+            "props": 
+                {"text": "The Designing of my Portfolio!", 
+                "subtext": "Practice Designing Simplistic Scalable Architecture",
+                "github": "https://github.com/Lootim247/portfolio"}},
+            {"type": "Paragraph_Section", "props": 
+                {"text": "Welcome to my portfolio! This was designed using Next.js with Github used as a version management control. To get it up on the web I used vercel for deployment and linking with a GoDaddy domain.\n\nThis page was designed with the explicit constraint of simple and easy scalability. The backbone of this design methodology is the JSON file. Each and every page in this portfolio is generated with an editable JSON file. My resume is generated from a list of experiences, my front page is generated from a JSON containing paragraphs, and my portfolio structure is rendered entirely from a JSON. \n\nMy magnum opus in design is the individual portfolio page generation script. This very page that you are viewing is generated explicitly from a JSON, which enables me to choose the layout of components as well as the props that are passed within. As a portfolio is often accessed rather than inserted into, these pages are built statically on the server and served to the user as prerendeered pages for better performance. See the code samples below."}},
+            {"type": "MultiPDF", "props": {"pdfs": [
+                {"src":"/code/portfolio_ID.txt", "title":"1. Page Generation", "type":"txt", "language": "HTML"},
+                {"src":"/code/portfolio_page_gen.txt", "title":"2. Generation JSON", "type":"txt", "language": "JSON"}
             ]}}
         ]
     }

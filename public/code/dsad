@@ -1,0 +1,63 @@
+portfolio
+.content {
+    padding-top: 40px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column; /* make flex children respect flex rules */
+    flex: 1;               /* allow content to grow inside page_wrapper */
+    justify-content: flex-start;
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+resume
+.content {
+    padding-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    font-family: "Times New Roman", Times, serif;
+    color: var(--color-text);
+}
+
+resume
+.full {
+    background-color: var(--color-bg-dark);
+}
+
+home
+.content {
+  padding-top: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+home
+.full {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+
+portfolio
+.page_wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    box-sizing: border-box;
+}

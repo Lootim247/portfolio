@@ -15,9 +15,9 @@ export default function Tab_Header() {
             <div className={styles.divider}>|</div>
             <Link href="/portfolio" className={styles.nav_link}>Portfolio</Link>
         </div>
-        <div className="tab_group_right">
+        {/* <div className="tab_group_right">
             <Link href="/contact" className={styles.nav_link}>Contact</Link>
-        </div>
+        </div> */}
     </div>
   );
 }

@@ -10,13 +10,13 @@
             {
                 "name": "CS135 : Machine Learning",
                 "type": "file",
-                "link" : "",
+                "link" : "portfolio/cs135",
                 "attributes" : ["Python", "scikit-learn"]
             }, {
                 "name": "CS120 : Web Development",
                 "type": "file",
                 "link" : "portfolio/cs120",
-                "attributes" : ["HTML", "PHP", "SQL", "NoSQL", "React"]
+                "attributes" : ["HTML", "PHP", "SQL", "NoSQL", "Javascript"]
             }
         ]
     },
@@ -29,6 +29,11 @@
                 "type": "file",
                 "link" : "portfolio/cr_vision",
                 "attributes" : ["Python", "pytorch", "GitHub"]
+            }, {
+                "name": "My Portfolio Website",
+                "type": "file",
+                "link" : "portfolio/portfolio",
+                "attributes" : ["Javascript", "GitHub"]
             }
         ]
     }
