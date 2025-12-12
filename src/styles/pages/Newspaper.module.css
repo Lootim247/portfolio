@@ -1,0 +1,31 @@
+.gridContainer {
+  display: grid;
+  /* Defines the size of auto-placed rows */
+  grid-template-rows: auto; 
+  /* Sets gaps between items */
+  gap: 10px; 
+  /* This is the default and can be omitted but is included for clarity */
+  grid-auto-flow: row; 
+  /* Defines the number and size of columns (e.g., 3 columns of equal width) */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Add a height constraint if necessary to force wrapping */
+  height: 200px; 
+}
+
+.item {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  text-align: center;
+}
+
+.item2 {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+  text-align: center;
+}
