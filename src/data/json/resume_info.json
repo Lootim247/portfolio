@@ -41,6 +41,12 @@
             "NoSQL"
         ],
         "tools_and_frameworks": [
+            "Relational/Non-Relational Databases",
+            "Ollama",
+            "Selenium",
+            "Nextjs",
+            "Vercel",
+            "AWS S3",
             "GitHub",
             "scikit-learn",
             "pytorch",
@@ -52,9 +58,30 @@
     },
     "project_experience": [
             {
+            "title": "Job Search Automation Developer",
+            "organization": "Personal Project",
+            "dates": "February 2026 - Present",
+            "details": [
+                "Designed and developed an automated job application system using Python to streamline the job search process, reducing manual effort by 80% and increasing qualification match rate by 50%",
+                "Engineered a modular pipeline integrating web scraping (Selenium/BeautifulSoup), relational (PostgreSQL) and non-relational (MongoDB) databases to store and manage job listings and application statuses efficiently.",
+                "Leveraged NLP via cloud hosted Ollama LLMs (parallel processing with concurrent.futures) to tailor resumes and cover letters for each job description.",
+                "Implemented validation and data-cleaning routines to ensure high-quality inputs and reliable automation workflows."
+            ]
+            }, {
+            "title": "Full-Stack Location Tracking App Developer",
+            "organization": "Personal Project",
+            "dates": "February 2026 - Present",
+            "details": [
+                "Developed 'Tim Tracker', a full-stack application using Next.js and Supabase for real-time location tracking with interactive map visualizations.",
+                "Engineered a scalable data architecture combining Supabase (PostgreSQL) for relational data with AWS S3 for secure, cost-optimized storage of location history.",
+                "Integrated Overland and OwnTracks mobile platforms through custom APIs, enabling battery-efficient location collection and processing.",
+                "Implemented Mapbox API for user-friendly visualization of routes, history, and points of interest with privacy-focused controls.",
+                "Designed secure architecture featuring end-to-end encryption, granular user permissions, and AWS S3 lifecycle policies for data management."
+            ]
+            }, {
             "title": "Clash Royale Elixir Tracker",
             "organization": "Personal",
-            "dates": "October 2025 - Present",
+            "dates": "October 2025 - Paused",
             "details": [
                 "Currently developing a computer vision system to track opponent elixir, starting with detecting and classifying enemy troops from gameplay using PyTorch CNNs, aiming for real-time in-game analysis.",
                 "Built and tested the first Dataset and DataLoader pipeline to efficiently process raw gameplay data, enabling initial model training and evaluation.",
@@ -63,7 +90,7 @@
             }, {
             "title": "LockedIn Accountability App",
             "organization": "Personal",
-            "dates": "December 2024 - Present",
+            "dates": "December 2024 - September 2025",
             "details": [
                 "Architected and developed a cross-platform mobile ecosystem using React Native and Typescript, deploying to IOS, Android and Web platforms with 95% code reuse across unified codebase.",
                 "Designed and normalized a PostgreSQL database with 10+ interrelated tables, incorporating stored procedures, database triggers, and Row-Level Security (RLS) policies to enforce data integrity and granular access control",
@@ -86,7 +113,7 @@
                 "Implemented prototype by comparing traits of printing stamp design while balancing the limitations of our 3-person Mechanical Engineering team.",
                 "Conducted research on braille accessibility device market and interviewed potential product users from the Massachusetts Association for the Blind and Visually Impaired to explore commercial viability"
             ]
-        }
+            }
     ],
     "work_experience": [{
         "organization": "Tufts University",
