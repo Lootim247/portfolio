@@ -8,7 +8,7 @@
                 {"text": "COMP 135: Machine Learning Coursework Projects", 
                 "subtext": "Feature Engineering and Scikit-Learn Practice"}},
             {"type": "Paragraph_Section", "props": 
-                {"text": ""}},
+                {"text": "This school project explored machine learning concepts such as training vs testing accuracy, validation techniques, visualizing weights, and designing and improving upon our own features. The core of this project was learning how to choose which features were most important to improve a classifiers accuracy. My personal journey consisted of weighing the benefits of different preprocessing techniques (Gaussian Blur, Median Blue, Bilateral Filter, Opening, Closing), adding new features (mean pixel value, histogram of color intensities, entropy, bounding boxes), and finally different feature selection techniques. Iteration used MSE values as a metric for improvement. The base model used in the experiment was a Logistic Regression Model from the python module scikit-learn. \n\nOverall this project was an intensely interesting project that includes many different visualizations and an iterative style of improvement throughout the paper. If interested, begin reading at the bottom of page 6."}},
             {"type": "MultiPDF", "props": {"pdfs": [
                 {"src":"/pdfs/cs135_p1.pdf", "title":"Project Report", "type":"pdf"}
             ]}}
