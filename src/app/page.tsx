@@ -38,7 +38,7 @@ export default function Home() {
 
       <div className={styles.groupDiv}>
         <span className={styles.textHeader2}>Looking for work!</span>
-        <span> If you are looking for a capable software engineer you are in luck, I am looking for work! I am interested in all walks of software engineering with particular interest in testing systems, machine learning and computer vision, and algorithmic work. I am seeking a colaborative work environment or mentorship based program. If that sounds perfect to you, let me know! </span>
+        <span> If you are looking for a capable software engineer, you are in luck. I am looking for work! I am interested in all walks of software engineering with particular interest in testing systems, machine learning and computer vision, and algorithmic work. I am seeking a colaborative work environment or mentorship based program. If that sounds perfect to you, let me know! </span>
       </div>
     </div>
   );
