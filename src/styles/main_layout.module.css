@@ -3,7 +3,7 @@
     width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #252526;
+    background-color: var(--dark-background);
 }
 
 .sideBar div {
@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: end;
     height: 10%;
-    background-color: #37373d;
+    background-color: var(--light-background);
     border-radius: 0px 0px 5px 5px;
 }
 
@@ -50,11 +50,11 @@
 }
 
 .sideBarButton:hover {
-    background-color: #37373d;
+    background-color: var(--light-background);
 }
 
 .activeSideBarButton {
-    background-color: #424248;
+    background-color: var(--active-UI);
 }
 
 .topHeader {
@@ -66,7 +66,7 @@
     gap: 30px;
     padding-left: 10px;
 
-    background-color: #3c3c3c;
+    background-color: var(--background);
 }
 
 .logo {
@@ -82,7 +82,7 @@
 
     flex: 1;
     gap:10px;
-    background-color: #3c3c3c;
+    background-color: var(--background);
 
     padding: 0px 5px 10px 5px;
 }
@@ -93,7 +93,7 @@
 
     border-radius: 10px;
     flex: 1;
-    background-color: #252526;
+    background-color: var(--dark-background);
 }
 
 .openFileHeader {
@@ -103,13 +103,13 @@
     justify-content: center;
     gap: 30px;
     padding: 10px;
-    background-color: #1e1e1e;  
+    background-color: var(--darkest-background);  
     border-radius: 10px 10px 0px 0px;
 }
 
 .childContentContainer {
     display: flex;
-    background-color: #1e1e1e;
+    background-color: var(--darkest-background);
     flex:1;
     border-radius: 0px 0px 10px 10px;
 }
