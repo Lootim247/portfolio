@@ -5,6 +5,7 @@ import profilePic from '../../public/me.jpeg'
 export default function Home() {
   return (
     <div className={styles.page}>
+      {/* desktop version */}
       <div className={styles.titleContainer}>
         <Image
           src={profilePic}
@@ -18,6 +19,30 @@ export default function Home() {
             #Timothy Panilaitis
           </span>
 
+          <span>
+            I always enjoyed Legos because of all the things I could create. Now I love Computer Science for that same reason.
+          </span>
+
+          <span className={styles.textHeader2}>
+            Software Engineer | ML Engineer | Data Analyst
+          </span>
+
+        </div>
+      </div>
+
+      {/* Mobile Version */}
+      <div className={styles.mobileTitleContainer}>
+          <span className={styles.textTitle}>
+            <Image
+            src={profilePic}
+            alt="User Profile"
+            placeholder="blur"
+            className={styles.profilePic}
+          />
+          # Timothy Panilaitis
+          </span>
+
+        <div className={styles.titleDescriptionContainer}>
           <span>
             I always enjoyed Legos because of all the things I could create. Now I love Computer Science for that same reason.
           </span>

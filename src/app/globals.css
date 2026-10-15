@@ -11,7 +11,7 @@
   --header2-color:#C49A32;
   --font-title: monospace;
   --font-body: var(--font-google);
-  --font-size-title: 16px
+  --font-size: clamp(13px, 3vw, 16px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,7 +28,7 @@
     --header2-color:#FFD700;
     --font-title: monospace;
     --font-body: var(--font-google);
-    --font-size-title: 16px
+    --font-size: clamp(13px, 3vw, 16px);
   }
 }
 
@@ -49,7 +49,7 @@ body {
   color: var(--font-color);
   background: var(--background);
   font-family: var(--font-title);
-  font-size: var(--font-size-title);
+  font-size: var(--font-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
