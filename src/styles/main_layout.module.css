@@ -1,5 +1,16 @@
+/* MOBILE RULES */
+.hamburgerMenu {
+    display: none;
+}
+
+.mobileSideBar {
+    display: none;
+}
+
+/* SIDEBAR FORMATTING */
 .sideBar {
     border-radius: 10px;
+    min-width: 200px;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -7,6 +18,12 @@
 }
 
 .sideBar div {
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.mobileSideBar div {
     padding: 10px 10px 0px 10px;
     display: flex;
     gap: 10px;
@@ -34,13 +51,6 @@
     align-items: center;
 }
 
-.icon {
-    align-items: center;
-    color: var(--title-color);
-    height: 100%;
-    width: 100%;
-}
-
 .sideBarButton {
     gap: 5px;
     border-radius: 5px;
@@ -55,6 +65,13 @@
 
 .activeSideBarButton {
     background-color: var(--active-UI);
+}
+
+.icon {
+    align-items: center;
+    color: var(--title-color);
+    height: 100%;
+    width: 100%;
 }
 
 .topHeader {
@@ -112,4 +129,48 @@
     background-color: var(--darkest-background);
     flex:1;
     border-radius: 0px 0px 10px 10px;
+}
+
+@media (max-width: 600px) {
+  .sideBar {
+    display: none;
+  }
+
+  .mobileSideBar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-background);
+
+    border-radius: 10px;
+    border-color: white;
+    border-width: 0 0 2px 2px;
+    border-style: solid;
+
+    top: 6vh;
+    right: 0;
+    width: 250px;
+    height: 93vh;
+
+    z-index: 100;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobileSideBarFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    height: 10%;
+    background-color: var(--light-background);
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  .hamburgerMenu {
+    flex:1;
+    justify-content: end;
+    align-items: end;
+    display: flex;
+    margin-right: 30px;
+  }
 }

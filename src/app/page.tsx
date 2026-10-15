@@ -19,7 +19,7 @@ export default function Home() {
           </span>
 
           <span>
-            I always enjoyed legos because of all the things I could create. Now I love Computer Science for that same reason.
+            I always enjoyed Legos because of all the things I could create. Now I love Computer Science for that same reason.
           </span>
 
           <span className={styles.textHeader2}>

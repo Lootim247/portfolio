@@ -3,7 +3,7 @@
 import { ReactNode, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronLeft, ChevronRight, Info, X, FileText} from "lucide-react";
+import { TextAlignJustify, ChevronDown, ChevronLeft, ChevronRight, Info, X, FileText } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styles from "../styles/main_layout.module.css";
 
@@ -15,7 +15,8 @@ type FileInfo = {
 };
 
 const files: Record<string, FileInfo> = {
-  "README.md": {
+  // HOME KEY SHOULD BE NONE
+  "": { 
     url: "/",
     displayName: "README.md",
     icon: <Info size={16} color="#6495ED"/>,
@@ -35,6 +36,9 @@ export default function PortfolioLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // mobile hamburger open state
+  const [open, setOpen] = useState(false);
+  
   // ensure state initiated correctly when visiting non-home first
   const pathname = usePathname();
   const activeFile = Object.values(files).find(
@@ -56,6 +60,11 @@ export default function PortfolioLayout({
           <ChevronRight/>
         </div>
         . . .
+
+        <a className={styles.hamburgerMenu}
+          onClick={()=>setOpen(!open)}>
+            <TextAlignJustify className={styles.UI}/>
+        </a>
       </div>
 
       <div className={styles.mainContent}>
@@ -98,13 +107,52 @@ export default function PortfolioLayout({
         <div className={styles.openFileContainer}>
           <div className={styles.openFileHeader}>
             {fileName}
-            <X size={14} />
+            <Link href="/" onClick={() => setFileName(files[""].displayName)}><X size={14}/></Link>
           </div>
 
           <main className={styles.childContentContainer}>
             {children}
           </main>
         </div>
+
+
+        { open && 
+        <div className={styles.mobileSideBar}>
+          <div className={styles.sideBarContainer}>
+            <div>
+              <ChevronDown size={20} />
+              portfolio_website
+            </div>
+            {Object.entries(files).map(([key, info]) => {
+              return (
+                <Link
+                  key={key}
+                  href={info.url}
+                  className={`${styles.sideBarButton} ${
+                    fileName === info.displayName
+                      ? styles.activeSideBarButton
+                      : ""
+                  }`}
+                  onClick={() => {setFileName(info.displayName); setOpen(false)}}
+                >
+                  {info.icon}
+                  {info.displayName}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className={styles.mobileSideBarFooter}>
+            <Link href="https://github.com/Lootim247" target="_blank" className={styles.footerLink}>
+              <FaGithub className={styles.icon}/>
+            </Link>
+            <Link href="https://www.linkedin.com/in/tim-panilaitis-24810a332/" target="_blank" className={styles.footerLink}>
+              <FaLinkedin className={styles.icon}/>
+            </Link>
+          </div>
+        </div>
+        }
+
       </div>
     </>
   );
